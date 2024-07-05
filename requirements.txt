@@ -1,0 +1,6 @@
+transformers
+rouge-score
+torch
+scikit-learn
+fastapi
+uvicorn
