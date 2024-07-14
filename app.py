@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 from typing import List
 import pandas as pd
+import torch
 
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
@@ -16,14 +17,8 @@ os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 logging.basicConfig(level=logging.INFO)
 
 # Token tidak diperlukan jika menggunakan model lokal
-model_path = "saved_model"
-
-# Pipeline dan tokenizer
-if os.path.isdir(model_path):
-    # Jika model_path adalah direktori lokal
-    nlp = pipeline("summarization", model=model_path, tokenizer=model_path)
-else:
-    raise ValueError("Model path is not a valid directory")
+model_path = "daryraa/bart_indo"
+nlp = pipeline("text2text-generation", model=model_path, tokenizer=model_path)
 
 app = FastAPI()
 
