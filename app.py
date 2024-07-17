@@ -17,7 +17,7 @@ os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 logging.basicConfig(level=logging.INFO)
 
 # Token tidak diperlukan jika menggunakan model lokal
-model_path = "daryraa/bart_indo"
+model_path = "facebook/bart-large"
 nlp = pipeline("text2text-generation", model=model_path, tokenizer=model_path)
 
 app = FastAPI()
