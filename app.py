@@ -37,7 +37,7 @@ class SummarizationParams(BaseModel):
     max_length: int = 150
     min_length: int = 50
 
-@app.post("/test")
+@app.post("/summarize")
 def summarize_text(text_data: TextData = Body(...), params: SummarizationParams = Body(...)):
     logging.info(f"Received text: {text_data.text}")
     logging.info(f"Received params: {params}")
