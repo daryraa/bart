@@ -8,8 +8,6 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 from typing import List
-import pandas as pd
-import torch
 
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
@@ -37,16 +35,36 @@ class SummarizationParams(BaseModel):
     max_length: int = 150
     min_length: int = 50
 
-@app.post("/summarize")
+@app.post("/test")
 def summarize_text(text_data: TextData = Body(...), params: SummarizationParams = Body(...)):
     logging.info(f"Received text: {text_data.text}")
     logging.info(f"Received params: {params}")
+
     # Potong teks jika melebihi 1024 karakter
     if len(text_data.text) > 1024:
         text_data.text = text_data.text[:1024]
+
+    # Menghasilkan ringkasan
     result = nlp(text_data.text, max_length=params.max_length, min_length=params.min_length, do_sample=True)
-    logging.info(f"Summary result: {result}")
-    return {"summary_text": result[0]['summary_text']}
+    summary = result[0]['generated_text']
+    logging.info(f"Initial Summary result: {summary}")
+
+    # Memastikan ringkasan terdiri dari 3-4 kalimat
+    sentences = summary.split('. ')
+    if len(sentences) > 4:
+        if len(sentences[3].split('.')) > 1:
+            summary = '. '.join(sentences[:3]) + '.'
+        else:
+            summary = '. '.join(sentences[:4]) + '.'
+    elif len(sentences) == 4 and sentences[3][-1] != '.':
+        summary = '. '.join(sentences[:3]) + '.'
+
+    # Pastikan kalimat terakhir diakhiri dengan titik
+    if not summary.endswith('.'):
+        summary += '.'
+    
+    logging.info(f"Final Summary result: {summary}")
+    return {"summary_text": summary}
 
 @app.get("/")
 def read_root():
