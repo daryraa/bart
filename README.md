@@ -202,7 +202,7 @@ Pastikan Anda mengganti placeholder `your-custom-endpoint` dengan URL endpoint F
    Arahkan cursor kepada main.dart, lalu klik kanan akan ada pilihan pilihan **Run Without Debugging**
 
 <p align="center">
-  <img src="path/to/your-first-image.png" alt="Scrape" width="45%" />
-  <img src="path/to/your-second-image.png" alt="Summarize" width="45%" />
+  <img src="path/to/your-first-image.png" alt="scrape" width="45%" />
+  <img src="path/to/your-second-image.png" alt="summarize" width="45%" />
 </p>
 
