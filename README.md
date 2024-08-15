@@ -13,14 +13,17 @@ Di era digital, informasi tersedia dalam jumlah yang melimpah, sehingga sulit un
 - **Aplikasi Mobile Flutter**: Antarmuka pengguna yang ramah, memungkinkan pengguna memasukkan teks dan mendengarkan konten yang diringkas.
 - **Integrasi Text-to-Speech**: Mengonversi teks yang diringkas menjadi suara untuk memudahkan akses bagi penyandang tunanetra.
 
+## Source Code
+bart-summarization-final.ipynb
+
 ## Instalasi
 
 ### Menyiapkan Lingkungan
 
 1. **Clone repositori:**
    ```bash
-   git clone https://github.com/daryraa/bart-text-summarization.git
-   cd bart-text-summarization
+   git clone https://github.com/daryraa/bart.git
+   cd bart
    ```
 
 2. **Instal dependensi Python:**
